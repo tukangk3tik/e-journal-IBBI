@@ -37,10 +37,12 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> Admin<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> <?= $this->session->userdata("nama");?><span class="caret"></span></a>
 
                         <ul class=dropdown-menu>
                             <li><a href="profil">Profil</a></li>
+                            <li><a href="user/gantipass">Rubah Password</a></li>
+                            <li class="divider"></li>
                             <li><a href="logout">Logout</a></li>
                         </ul>
                     </li>

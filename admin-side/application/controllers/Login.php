@@ -39,14 +39,20 @@ class Login extends CI_Controller {
 	public function ceklogin(){
 		if ($this->input->post()){
 			if ($this->_validate()){
-				$iduser = $this->input->post("userid");
+				$userid = $this->input->post("userid");
 				$password = do_hash($this->input->post("password"),"md5");
-				$user = $this->login_model->ambilUser($iduser,$password);
+				$user = $this->login_model->ambilUser($userid,$password);
 			
 				if($user->num_rows()>0){
 					$data_user = $user->row();
-					$this->session->set_userdata(array("nama" => $data_user->nama,"islogin" => TRUE));
-					redirect("beranda");
+					if($data_user->status=="AKD"){
+						$this->session->set_userdata(array("userid"=>$data_user->userid,"nama" => $data_user->nama,"islogin" => TRUE));
+						redirect("beranda");
+					} else {
+						$this->session->set_flashdata("error-login","Anda tidak memiliki hak akses ke sistem");
+						redirect("login");
+					}
+					
 				} else {
 					$this->session->set_flashdata("error-login","User ID dan Password salah");
 					redirect("login");
