@@ -1,6 +1,6 @@
 e-Journal STMIK IBBI
 
-This site provide
+This project using PHP and Code Igniter framework. For data handle we used AJAX.
 
 Equipment used in this project:
 - XAMPP 7.2.11
