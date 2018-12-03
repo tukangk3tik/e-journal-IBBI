@@ -9,7 +9,7 @@ $this->load->view("components/navbar");
                 <div class="modal-header"><h3>Form User</h3></div>
                 <div class="modal-body">
                     <form action="">
-                        <div class="form-group">
+                        <div class="form-group" autocomplete="off">
                             <label for="userid">User ID</label>
                             <input type="text" class="form-control" name="userid" id="userid">
                         </div>

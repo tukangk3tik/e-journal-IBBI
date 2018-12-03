@@ -1,12 +1,9 @@
 e-Journal STMIK IBBI
 
-This Admin-side using PHP and Codeigniter framework. For data handle we used AJAX.
+This project has 2 part, admin-side and client-side.
 
-Equipment used in this project:
-- XAMPP 7.2.11
-- CodeIgniter 3.1.9
-- Bootstrap 3.3.7
-- Jquery 3.3.1
+We make the admin section first, then it will proceed with creating a client section.
+Admin-side is web based, and Client-side is android based.
 
 Our team make this project for college and complete the assigment. This project is under development.
 

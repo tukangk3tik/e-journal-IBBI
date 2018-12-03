@@ -49,7 +49,6 @@ class User extends CI_Controller {
 			}elseif($mode=="edit"){
 				$status = $this->user_model->updateUser($this->input->post("userid"),$data);
 			}
-
 			echo json_encode(array("status" => TRUE));
 		}else{
 			echo json_encode(array(

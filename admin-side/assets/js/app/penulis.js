@@ -61,8 +61,8 @@ function gantiKons(params){         //fungsi untuk mengatur pilihan pada combo b
 }
 
 function tampilPesan(mode){
-    var divMessage = "div class='alert alert-success'> Berhasil <strong>"+mode.toUpperCase() + "</strong> Data Penulis </div>";
-    $(divMessage).prepentTo("container").delay(2000).slideUp("slow");
+    var divMessage = "<div class='alert alert-success'> Berhasil <strong>"+ mode.toUpperCase() + "</strong> Data Penulis </div>";
+    $(divMessage).prependTo(".container").delay(2000).slideUp("slow");
 }
 
 function hapusPenulis(id){
@@ -74,7 +74,7 @@ function hapusPenulis(id){
             success: function(data){
                 if(data.status){
                     tampilPenulis();
-                    //showMessage("hapus");
+                    tampilPesan("hapus");
                 }
             }
         })
@@ -118,8 +118,7 @@ function simpanPenulis(){
         success: function(data){
             if(data.status){
                 tampilPenulis();
-                //showMessage(mode);
-
+                tampilPesan(mode);
                 $("#form-penulis").modal("hide");
             } else {
                 $("span.help-block").remove();

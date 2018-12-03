@@ -70,7 +70,7 @@ class Penulis extends CI_Controller {
 			array(
 				"field" => "nim",
 				"label" => "NIM",
-				"rules" => "required|exact_length[10]".($mode=="add"?"|is_unique[tblpenulis.nim]":"")
+				"rules" => "required|exact_length[10]".($mode=="tambah"?"|is_unique[tblpenulis.nim]":"")
 			),
 			array(
 				"field" => "nama",
