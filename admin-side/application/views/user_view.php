@@ -34,7 +34,7 @@ $this->load->view("components/navbar");
                                 <label for="status">Status</label>
                                 <select id="status" class="form-control" name="status">
                                     <option value="AKD">Akademik</option>
-                                    <option value="DOS">Dosen</option>
+                                    <!--option value="DOS">Dosen</option-->
                                     <option value="MHS">Mahasiswa</option>
                                 </select>
                             </div>    
