@@ -5,7 +5,7 @@
         <div class="page-header">
             <h1><span class="glyphicon glyphicon-briefcase"></span> Detail Jurnal <small>Berisi Informasi Data Jurnal Detail</small></h1>
         </div>
-
+        <?php foreach($jurnal as $item){};?>
         <div class="col-md-8">
         <form action="#" method="POST">
             <div class="row">
@@ -13,27 +13,27 @@
                 <tr>
                     <td>ID Jurnal</td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>J-TI17-008</td>
+                    <td><?php echo "{$item->idjurnal}";?></td>
                 </tr>
                 <tr>
                     <td>Judul</td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>Robotik Pembersih Kolam Ikan dengan RaspberryPi</td>
+                    <td><?php echo "{$item->judul}";?></td>
                 </tr>
                 <tr>
-                    <td>ID Penulis</td>
+                    <td>NIM</td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>1513121479</td>
+                    <td><?php echo "{$item->nim}";?></td>
                 </tr>
                 <tr>
                     <td>Tahun</td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>2017</td>
+                    <td><?php echo "{$item->tahun}";?></td>
                 </tr>
                 <tr>
                     <td>Jumlah Halaman</td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>120</td>
+                    <td><?php echo "{$item->jumlahhalaman}";?></td>
                 </tr>
             </table>
             </div>
@@ -102,4 +102,6 @@
             <div class="clearfix"></div>
         </div>
     </div>
+    <script src="assets/js/converter.js"></script>
+    <script src="assets/js/app/jurnal.js"></script>
 <?php $this->load->view("components/footer");?>
