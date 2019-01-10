@@ -18,9 +18,9 @@ $(document).ready(function(){
     $("tbody").on("click","#rubah",function(){
         mode = "ubah";
         var id = $(this).data("id");
+        $("select#nim").empty();
         $("span.help-block").remove();
         $(".form-group").removeClass("has-error");
-        //$("input[name='idjurnal']").attr("readonly",true);
         bacaJurnal(id);
     });
 
@@ -38,22 +38,6 @@ function tampilPesan(mode){
     var divMessage = "<div class='alert alert-success'> Berhasil <strong>"+ mode.toUpperCase() + "</strong> Jurnal </div>";
     $(divMessage).prependTo(".container").delay(2000).slideUp("slow");
 }
-
-function seleksiNIM(params){
-    var phpvar = "";
-    phpvar += "<label for='nim'>NIM</label><select id='nim' name='nim' class='form-control'><option disabled selected value=''>--pilih-NIM--</option>"+
-            "<?php $penulis = $this->jurnal_model->ambilPenulis('"+params+"')->result();" +
-            "foreach($penulis as $item): echo '"+
-            "<option value='{$item->nim}'>{$item->nim}</option>' endforeach; ?></select>";
-    
-    $.ajax({
-        type: "POST",
-        url: 'jurnal',
-        data: "html=" + phpvar,
-        success: function(data){}
-    });
-}
-
 
 function hapusJurnal(id){
     if(confirm("Anda yakin hapus?")){
@@ -80,9 +64,11 @@ function bacaJurnal(id){
         dataType: "JSON",
         success: function(data){
             $("#judul").val(data.judul);
-            $("#nim").val(data.nim);
+            bacapenulisTerdaftar(mode);
+            $("select#nim").append("<option selected value='"+data.nim+"'>"+data.nim+"</option>");
+
             $("#tahun").val(data.tahun);
-            $("#jurusan").val(konversiJurusan(data.jurusan));
+            $("#jurusan").val(data.jurusan);
             $("#jumlahhalaman").val(data.jumlahhalaman);
             $("#ringkasan").val(data.ringkasan);
             $("#mode").html("Rubah");
@@ -141,18 +127,23 @@ function tampilJurnal(){
     })
 }
 
-function bacapenulisTerdaftar(params){
+function bacapenulisTerdaftar(){
     $.ajax({
-        url: "jurnal/getnim/"+params,
+        url: "jurnal/getnim",
         type: "ajax",
         dataType: "JSON",
         success: function(data){
             var html = "";
-            var n = '<option disabled selected value="">--pilih-NIM--</option>';
+            var n = '<option disabled selected id="pilih" value="">--pilih-NIM--</option>';
             $.each(data,function(key,item){
                 html += "<option value='"+item.nim+"'>"+item.nim+"</option>";
             });
-            $("select#nim").append(n).append(html);
+            if (mode=="tambah"){
+                $("select#nim").append(n).append(html);
+            } else if (mode=="ubah"){
+                $("select#nim").append(html);
+            }
+            
         }
     })
 }

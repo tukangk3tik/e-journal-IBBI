@@ -68,8 +68,8 @@ class Jurnal extends CI_Controller {
 		return $data;
 	}
 
-	public function getnim($mode){
-		echo json_encode($this->jurnal_model->ambilPenulis($mode)->result());
+	public function getnim(){
+		echo json_encode($this->jurnal_model->ambilPenulis()->result());
 	}
 
 	private function _validate($mode){

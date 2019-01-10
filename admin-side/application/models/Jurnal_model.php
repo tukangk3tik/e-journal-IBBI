@@ -35,28 +35,24 @@ class Jurnal_model extends CI_Model{
         return $query->row();
     }
     
-    public function ambilPenulis($mode){
-        if ($mode="tambah"){
-            $query = $this->db
-                            ->select("b.nim")
-                            ->from("tbljurnal a")
-                            ->join("tblpenulis b","a.nim=b.nim","right")
-                            ->where("a.judul is null")
-                            ->get();
-
-        } elseif ($mode="ubah"){
-            $query = $this->db
-                            ->select("b.nim")
-                            ->from("tbljurnal a")
-                            ->join("tblpenulis b","a.nim=b.nim","right")
-                            ->where("a.nim=b.nim")
-                            ->where("a.judul is null")
-                            ->get();
-        }
-
-        return $query;
+    public function ambilPenulis(){
+        $query = $this->db
+                        ->select("b.nim")
+                        ->from("tbljurnal a")
+                        ->join("tblpenulis b","a.nim=b.nim","right")
+                        ->where("a.judul is null")
+                        ->get();
+        return $query;            
     }
 
+    // public function ambilPenulisjurnal($nim){
+    //     $query = $this->db
+    //                     ->select("nim")
+    //                     ->from("tbljurnal")
+    //                     ->where("nim",$nim)
+    //                     ->get();
+    //     return $query;   
+    // }
     //========Jurnal detail model================   
 
     public function ambildataJurnal($id){
@@ -84,8 +80,6 @@ class Jurnal_model extends CI_Model{
     }
 
     public function ambilJenis($data){
-        //$this->db
-        //$query = [];
         $query = $this->db
                         ->select("jenis")
                         ->from("tbljurnaldtl")
@@ -96,12 +90,8 @@ class Jurnal_model extends CI_Model{
         $arr = array_map(function($value){
             return $value['jenis'];
         }, $array);
-        /*
-        $this->db->select("jenis");
-        $this->db->from("tbljurnaldtl");
-        $this->db->where("idjurnal",$data);
-        return $this->db->get()->row()->jenis;
-        /*/return $arr;
+        
+        return $arr;
     }
 
     public function hitungJumlah($data){
