@@ -30,3 +30,16 @@ function konversiStatusUser(nilai){
     }
     return hasil;
 }
+
+function konversiBab(nilai){
+    var hasil = "";
+    switch(nilai){
+        case "awalan": hasil = "Judul, Kata Pengantar, Daftar Isi"; break;
+        case "1": hasil = "BAB I"; break;
+        case "2": hasil = "BAB II"; break;
+        case "3": hasil = "BAB III"; break;
+        case "4": hasil = "BAB IV"; break;
+        case "5": hasil = "BAB V"; break;
+    }
+    return hasil;
+}

@@ -1,5 +1,6 @@
 <?php $this->load->view("components/header"); 
       $this->load->view("components/navbar");?>
+    
     <div class="container">
             <div class="modal fade" tabindex="-1" role="dialog" id="form-jurnal">
                 <div class="modal-dialog">
@@ -12,25 +13,11 @@
                                     <input type="text" id="judul" name="judul" class="form-control">
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <?= $jorbut = "";?>
-                                        <script>"<? $jorbut;?>" = html;</script>                                
-                                        
-                                        <!--label for="nim">NIM</label>
+                                    <div class="form-group col-md-6">         
+                                        <label for="nim">NIM</label>
                                         <select id="nim" name="nim" class="form-control">
-                                            <option disabled selected value="">--pilih-NIM--</option-->
-                                            
-                                            <?php 
-                                                echo $jorbut;
-                                                /*   
-                                                //$penulis = "";
-                                                //$penulis = $this->jurnal_model->ambilPenulis()->result();
-                                                
-                                                foreach($penulis as $item):
-                                                    echo "<option value='{$item->nim}'>{$item->nim}</option>";
-                                                endforeach; */
-                                            ?>
-                                        <!--/select-->
+
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="jurusan">Jurusan</label>

@@ -8,18 +8,12 @@ class Jurnal extends CI_Controller {
 		if(!$this->session->userdata("islogin")){
 			redirect("login");
 		}
-		$this->load->library('javascript');
-		$this->load->library('javascript/jquery');
 		$this->load->model('jurnal_model');
 	}
 
 	public function index(){
 		$data["penulis"] = $this->ambilPenulis("tambah");
 		$this->load->view('jurnal_view',$data);
-
-		$lib['library_src'] = $this->jquery->script();
-		//$lib['click'] = $this->jquery-3-3-1->_click('#tambah',$this->ambilPenulis("tambah"));
-		
 	}
 	
 	public function data(){
@@ -70,7 +64,12 @@ class Jurnal extends CI_Controller {
 
 	public function ambilPenulis($mode){
 		$data = $this->jurnal_model->ambilPenulis($mode)->result();		
+		
 		return $data;
+	}
+
+	public function getnim($mode){
+		echo json_encode($this->jurnal_model->ambilPenulis($mode)->result());
 	}
 
 	private function _validate($mode){
@@ -111,22 +110,4 @@ class Jurnal extends CI_Controller {
 		$this->form_validation->set_error_delimiters("<span class='help-block'>","</span>");
 		return $this->form_validation->run();
 	}
-
-//==================== jurnal detail
-
-	public function jurnaldtl(){
-		if($this->input->get()){
-			$data["jurnal"] = $this->jurnal_model
-								->ambilJurnaldtl($this->input->get("idjurnal"))
-                    			->result();
-			$this->load->view("jurnaldtl_view",$data);
-        } else {
-            redirect("jurnal");
-        }
-	}
-/*
-	private function _data($id){
-		$data["jurnal"] = $this->jurnal_model->ambilJurnaldtl($id)->result();
-		return $data;
-	} */
 }

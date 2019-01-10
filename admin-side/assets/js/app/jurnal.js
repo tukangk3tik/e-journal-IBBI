@@ -1,13 +1,14 @@
 var mode = "";
 var html = "";
 
-$(document).ready(function(){
+$(document).ready(function(){ 
     tampilJurnal();
 
     $("#tambah").click(function(){
         mode = "tambah";
-        seleksiNIM();
         $("form")[0].reset();
+        $("select#nim").empty();
+        bacapenulisTerdaftar(mode);
         $("#mode").html("Tambah");
         $("span.help-block").remove();
         $(".form-group").removeClass("has-error");
@@ -38,11 +39,19 @@ function tampilPesan(mode){
     $(divMessage).prependTo(".container").delay(2000).slideUp("slow");
 }
 
-function seleksiNIM(){
-    html =  "<?php= $penulis = $this->jurnal_model->ambilPenulis(\"tambah\")->result();?>" +
-            "<label for='nim'>NIM</label><select id='nim' name='nim' class='form-control'><option disabled selected value=''>--pilih-NIM--</option>"+
-            "<?php foreach($penulis as $item): echo '<option value=\"'.$item->nim.'\">'.$item->nim.'</option>' endforeach; ?>"+
-            "</select>";
+function seleksiNIM(params){
+    var phpvar = "";
+    phpvar += "<label for='nim'>NIM</label><select id='nim' name='nim' class='form-control'><option disabled selected value=''>--pilih-NIM--</option>"+
+            "<?php $penulis = $this->jurnal_model->ambilPenulis('"+params+"')->result();" +
+            "foreach($penulis as $item): echo '"+
+            "<option value='{$item->nim}'>{$item->nim}</option>' endforeach; ?></select>";
+    
+    $.ajax({
+        type: "POST",
+        url: 'jurnal',
+        data: "html=" + phpvar,
+        success: function(data){}
+    });
 }
 
 
@@ -123,10 +132,27 @@ function tampilJurnal(){
                             "<td>"+ item.jumlahhalaman +"</td>" +
                             "<td><button id='rubah' class='btn btn-warning btn-block' data-id='"+ item.idjurnal +"'><span class='glyphicon glyphicon-pencil'></span> Rubah</button></td>" +
                             "<td><button id='hapus' class='btn btn-danger btn-block' data-id='"+ item.idjurnal +"'><span class='glyphicon glyphicon-trash'></span> Hapus</button></td>" +
-                            "<td><a href='jurnal/jurnaldtl?idjurnal="+ item.idjurnal +"' class='btn btn-primary btn-block'><span class='glyphicon glyphicon-plus'></span> <span class='glyphicon glyphicon-pencil'></span> Detail Jurnal</a></td>" +
+                            "<td><form action='jurnal/jurnaldtl' method='POST'><input hidden type='text' name='idjurnal' value='"+item.idjurnal+"'>"+
+                                "<input type='submit' class='btn btn-primary btn-block' value=' Detail Jurnal '></form></td>" +
                         "</tr>";
             });
             $("tbody#table-jurnal").html(html);
+        }
+    })
+}
+
+function bacapenulisTerdaftar(params){
+    $.ajax({
+        url: "jurnal/getnim/"+params,
+        type: "ajax",
+        dataType: "JSON",
+        success: function(data){
+            var html = "";
+            var n = '<option disabled selected value="">--pilih-NIM--</option>';
+            $.each(data,function(key,item){
+                html += "<option value='"+item.nim+"'>"+item.nim+"</option>";
+            });
+            $("select#nim").append(n).append(html);
         }
     })
 }

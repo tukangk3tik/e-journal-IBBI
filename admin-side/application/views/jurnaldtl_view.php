@@ -5,9 +5,9 @@
         <div class="page-header">
             <h1><span class="glyphicon glyphicon-briefcase"></span> Detail Jurnal <small>Berisi Informasi Data Jurnal Detail</small></h1>
         </div>
-        <?php foreach($jurnal as $item){};?>
+        <?php foreach($jurnal as $item){}; $idjurnal = "{$item->idjurnal}";?>
         <div class="col-md-8">
-        <form action="#" method="POST">
+        <form action="jurnaldtl/simpan" method="POST">
             <div class="row">
             <table>
                 <tr>
@@ -39,14 +39,39 @@
             </div>
             <div class="row" style="padding-top: 20px;">
             <div class="form-group">
+                <?php
+                    $result = array_diff($enum,$detail);    //membandingkan nilai
+                ?>
+                <input hidden type="text" name="idjurnal" value="<?php echo $idjurnal;?>">
                 <label for="jenis">Jenis</label>
-                <select id="jenis" class="form-control" value="">
-                    <option value="awalan">Judul, Kata Pengantar, Daftar Isi</option>
-                    <option value="1">BAB I</option>
-                    <option value="2">BAB II</option>
-                    <option value="3">BAB III</option>
-                    <option value="4">BAB IV</option>
-                    <option value="5">BAB V</option>
+                <select id="jenis" name="jenis" class="form-control">
+                    <option disabled selected value="">--pilih-Jenis--</option>
+                    <?php 
+
+                        foreach($result as $hasil):
+                            switch ($hasil) {
+                                case $hasil==0:
+                                    echo '<option value="0">Judul, Kata Pengantar, Daftar Isi</option>';
+                                    break;
+                                case $hasil==1:
+                                    echo '<option value="1">BAB I</option>';
+                                    break;
+                                case $hasil==2:
+                                    echo '<option value="2">BAB II</option>';
+                                    break;
+                                case $hasil==3:
+                                    echo '<option value="3">BAB III</option>';
+                                    break;
+                                case $hasil==4:
+                                    echo '<option value="4">BAB IV</option>';
+                                    break;
+                                case $hasil==5:
+                                    echo '<option value="5">BAB V</option>';
+                                    break;
+                            };
+                        endforeach;
+                    
+                    ?>
                 </select>
             </div>
             <div class="form-group">
