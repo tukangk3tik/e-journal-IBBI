@@ -2,11 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Jurnaldtl extends CI_Controller {
+	
+	
 	public function __construct(){
 		parent::__construct();
 		if(!$this->session->userdata("islogin")){
 			redirect("login");
 		}
+		
 		$this->load->model('jurnal_model');
 	}
 
@@ -18,7 +21,7 @@ class Jurnaldtl extends CI_Controller {
 								->ambildataJurnal($idjurnal)->result();
 
 			$data["detail"] = $this->jurnal_model
-								->ambilJenis($idjurnal);
+								->ambilsemuaJenis($idjurnal);
 
 			$data["enum"] = $this->_enum_select("tbljurnaldtl","jenis");
 
@@ -27,6 +30,23 @@ class Jurnaldtl extends CI_Controller {
             redirect("jurnal");
 		}
 	}
+	
+	public function view($id,$stats){
+		$data["ket"] = $this->jurnal_model->ambildataJurnal($id)->result();
+		$data["tampil"] = $this->jurnal_model->tampilDtl($id,$stats)->row();
+		$this->load->view("detail_view",$data);
+	}
+
+	public function hapus($id,$stats){
+		//if($this->input->get(){
+			//$data = $this->uri->uri_to_assoc();
+			$id = $data['id'];
+			//$stats = $data['stats'];
+			$this->jurnal_model->hapusjurnalDtl($id,$stats);
+			redirect("jurnal/jurnaldtl");
+		//}
+	}
+
 
 	public function simpan(){
 		$data = array(
@@ -36,8 +56,7 @@ class Jurnaldtl extends CI_Controller {
 		);
 
 		$this->jurnal_model->simpanjurnalDtl($data);
-		
-		redirect('jurnal/jurnaldtl');
+		redirect("jurnal/jurnaldtl");
 	}
 
 	private function _enum_select($table,$field){
@@ -46,7 +65,6 @@ class Jurnaldtl extends CI_Controller {
 		$regex = "/'(.*?)'/";
 		preg_match_all( $regex , $row, $enum_array );
 		$enum_fields = $enum_array[1];
-		return	($enum_fields) ;
+		return ($enum_fields) ;
 	}
-	
 }

@@ -26,15 +26,20 @@
                     </li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toogle" data-toggle="dropdown" role="button">LAPORAN <span class="caret"></span></a>
-                        
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Lap.Jurnal</a></li>
-                            <li><a href="#">Lap.Penulis</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                  
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                    LAPORAN <span class="caret"></span></a>
 
+                    <ul class="dropdown-menu">
+                        <li><a href="laporan/jurnal" target="_blank">Lap. Jurnal</a></li>
+                        <li><a href="laporan/jurnalper" target="_blank">Lap. Per-Jurnal</a></li>
+                        <!-- <li><a href="laporan/penulis" target="_blank">Lap.Penulis</a></li> -->
+                        <li><a href="laporan/penulis" target="_blank">Lap. Penulis</a></li>
+                        <li><a href="laporan/user" target="_blank">Lap. User</a></li>
+                    </ul>
+                </li>
+            </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> <?= $this->session->userdata("nama");?><span class="caret"></span></a>

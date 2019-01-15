@@ -34,7 +34,7 @@ function konversiStatusUser(nilai){
 function konversiBab(nilai){
     var hasil = "";
     switch(nilai){
-        case "awalan": hasil = "Judul, Kata Pengantar, Daftar Isi"; break;
+        case "6": hasil = "Awalan"; break;
         case "1": hasil = "BAB I"; break;
         case "2": hasil = "BAB II"; break;
         case "3": hasil = "BAB III"; break;

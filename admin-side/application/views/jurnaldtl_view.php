@@ -5,7 +5,7 @@
         <div class="page-header">
             <h1><span class="glyphicon glyphicon-briefcase"></span> Detail Jurnal <small>Berisi Informasi Data Jurnal Detail</small></h1>
         </div>
-        <?php foreach($jurnal as $item){}; $idjurnal = "{$item->idjurnal}";?>
+        <?php foreach($jurnal as $item){}; $idjurnal = "{$item->idjurnal}"; $id["idjurnal"] = $item->idjurnal;?>
         <div class="col-md-8">
         <form action="jurnaldtl/simpan" method="POST">
             <div class="row">
@@ -47,11 +47,10 @@
                 <select id="jenis" name="jenis" class="form-control">
                     <option disabled selected value="">--pilih-Jenis--</option>
                     <?php 
-
                         foreach($result as $hasil):
                             switch ($hasil) {
-                                case $hasil==0:
-                                    echo '<option value="0">Judul, Kata Pengantar, Daftar Isi</option>';
+                                case $hasil==6:
+                                    echo '<option value="6">Judul, Kata Pengantar, Daftar Isi</option>';
                                     break;
                                 case $hasil==1:
                                     echo '<option value="1">BAB I</option>';
@@ -70,7 +69,6 @@
                                     break;
                             };
                         endforeach;
-                    
                     ?>
                 </select>
             </div>
@@ -82,44 +80,97 @@
             </div>
         </form>
         </div>
-
+        <?php
+        $i="";
+            $ada = "<td><span class='glyphicon glyphicon-ok-circle' style='color:green'></span></td>
+                    <td><a href='jurnaldtl/hapus/".$idjurnal."/".$i;
+            
+            $ada2 = "' class='btn btn-danger btn-block' onclick='return confirm(\"Anda Yakin Hapus?\")'>
+                    <span class='glyphicon glyphicon-trash'></span> Hapus</button></td>
+                    <td><a href='jurnaldtl/view/".$idjurnal."/".$i;
+            
+            $ada3 =  "' class='btn btn-primary'>
+                     <span class='glyphicon glyphicon-eye-open'>
+                    </span> Lihat</a></td>";
+        
+            $kosong = "<td><span class='glyphicon glyphicon-remove-circle' style='color:red'></span></td>
+                        <td><a disabled class='btn btn-danger btn-block'>
+                        <span class='glyphicon glyphicon-trash'></span> Hapus</button></td>
+                        <td><a disabled class='btn btn-primary'><span class='glyphicon glyphicon-eye-open'>
+                        </span> Lihat</a></td>";
+        ?>
         <div class="col-md-4">
             <table class="table table-bordered table-striped table-hover" style="margin-top: 10px; text-align: center;">
                 <thead>
                     <th>Jenis</th>
                     <th>Status</th>
+                    <th>Hapus</th>
                     <th>Link</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Awalan</td>
-                        <td><span class="glyphicon glyphicon-ok-circle" style="color:green"></span></td>
-                        <td><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
+                        <?php 
+                            if (in_array($i = "6", $detail)) {
+                                echo $ada."".$i."".$ada2."".$i."".$ada3;
+                                $this->session->set_flashdata('stats','0');
+                            } else {
+                                echo $kosong;
+                            }
+                        ?> 
                     </tr>
                     <tr>
                         <td>BAB I</td>
-                        <td><span class="glyphicon glyphicon-ok-circle" style="color:green"></span></td>
-                        <td><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
+                        <?php 
+                            if (in_array($i = "1", $detail)) {
+                                echo $ada."".$i."".$ada2."".$i."".$ada3;
+                                $this->session->set_flashdata('stats','1');
+                            } else {
+                                echo $kosong;
+                            }
+                        ?> 
                     </tr>
                     <tr>
                         <td>BAB II</td>
-                        <td><span class="glyphicon glyphicon-ok-circle" style="color:green"></span></td>
-                        <td><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
+                        <?php 
+                            if (in_array($i = "2", $detail)) {
+                                echo $ada."".$i."".$ada2."".$i."".$ada3;
+                                $this->session->set_flashdata('stats','2');
+                            } else {
+                                echo $kosong;
+                            }
+                        ?> 
                     </tr>
                     <tr>
                         <td>BAB III</td>
-                        <td><span class="glyphicon glyphicon-ok-circle" style="color:green"></span></td>
-                        <td><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
+                        <?php 
+                            if (in_array($i = "3", $detail)) {
+                                echo $ada."".$i."".$ada2."".$i."".$ada3;
+                                $this->session->set_flashdata('stats','3');
+                            } else {
+                                echo $kosong;
+                            }
+                        ?> 
                     </tr>
                     <tr>
                         <td>BAB IV</td>
-                        <td><span class="glyphicon glyphicon-remove-circle" style="color:red;"></span></td>
-                        <td><a disabled href="#" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
+                        <?php 
+                            if (in_array($i = "4", $detail)) {
+                                echo $ada."".$i."".$ada2."".$i."".$ada3;
+                            } else {
+                                echo $kosong;
+                            }
+                        ?> 
                     </tr>
                     <tr>
                         <td>BAB V</td>
-                        <td><span class="glyphicon glyphicon-remove-circle" style="color:red;"></span></td>
-                        <td><a disabled href="#" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
+                        <?php 
+                            if (in_array($i = "5", $detail)) {
+                                echo $ada."".$i."".$ada2."".$i."".$ada3;
+                            } else {
+                                echo $kosong;
+                            }
+                        ?> 
                     </tr>
                 </tbody>
             </table>

@@ -25,6 +25,7 @@ class Jurnal extends CI_Controller {
 	}
 
 	public function hapus($idjurnal){
+		$this->jurnal_model->hapusallDtl($idjurnal);
 		echo json_encode(array("status" => $this->jurnal_model->hapusJurnal($idjurnal)));
 	}
 
