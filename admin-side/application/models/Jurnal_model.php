@@ -3,6 +3,15 @@
 class Jurnal_model extends CI_Model{
     var $tbl = "tbljurnaldtl";
 
+    public function ambilJurnalFilter($jurusan,$tahun){
+        $query = $this->db
+                        ->where("jurusan",$jurusan)
+                        ->where("tahun",$tahun)
+                        ->get("tbljurnal");
+
+        return $query;
+    }
+
     public function ambilJurnal(){
         $query = $this->db->get("tbljurnal");
         return $query;

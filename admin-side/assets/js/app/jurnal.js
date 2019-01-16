@@ -3,6 +3,14 @@ var html = "";
 
 $(document).ready(function(){ 
     tampilJurnal();
+    
+    $("#filter").click(function(){
+        var jurusan = $("#jurusan-fill").val();
+        var tahun = $("#tahun-fill").val(); 
+
+        $("tbody#table-jurnal").empty();
+        filterJurnal(jurusan,tahun);
+    });
 
     $("#tambah").click(function(){
         mode = "tambah";
@@ -146,4 +154,30 @@ function bacapenulisTerdaftar(){
             
         }
     })
+}
+
+function filterJurnal(jurusan,tahun){
+    $.ajax({
+        url: "jurnal/filter/"+jurusan+"/"+tahun,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data){
+            var html = "";
+            for(i=0;i<data.length;i++){
+                html += "<tr>" +
+                            "<td>"+ data[i].idjurnal +"</td>" +
+                            "<td>"+ data[i].judul +"</td>" +
+                            "<td>"+ data[i].nim +"</td>" +
+                            "<td>"+ data[i].tahun +"</td>" +
+                            "<td>"+ konversiJurusan(data[i].jurusan) + "</td>" +
+                            "<td>"+ data[i].jumlahhalaman +"</td>" +
+                            "<td><button id='rubah' class='btn btn-warning btn-block' data-id='"+ data[i].idjurnal +"'><span class='glyphicon glyphicon-pencil'></span> Rubah</button></td>" +
+                            "<td><button id='hapus' class='btn btn-danger btn-block' data-id='"+ data[i].idjurnal +"'><span class='glyphicon glyphicon-trash'></span> Hapus</button></td>" +
+                            "<td><form action='jurnal/jurnaldtl' method='POST'><input hidden type='text' name='idjurnal' value='"+data[i].idjurnal+"'>"+
+                                "<input type='submit' class='btn btn-primary btn-block' value=' Detail Jurnal '></form></td>" +
+                        "</tr>";
+            };
+            $("tbody#table-jurnal").html(html);
+        }
+    });
 }

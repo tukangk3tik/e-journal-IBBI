@@ -51,7 +51,7 @@
                                             <option value="2003">2003</option>
                                             <option value="2002">2002</option>
                                             <option value="2001">2001</option>
-                                            <option value="2000"><= 2000</option>
+                                            <option value="<=2000"><= 2000</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -85,14 +85,16 @@
         <div class="form-inline">
             <div class="form-group">
                 <label for="jurusan">Jurusan &nbsp;</label>
-                <select name="" id="jurusan" class="form-control">
+                <select name="jurusan-fill" id="jurusan-fill" class="form-control">
+                    <option disabled selected value="">--pilih-Jurusan--</option>
                     <option value="si">Sistem Informasi</option>
                     <option value="ti">Teknik Informatika</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="tahun">&nbsp; Tahun &nbsp;</label>
-                <select name="tahun" id="tahun" class="form-control">
+                <select name="tahun-fill" id="tahun-fill" class="form-control">
+                    <option disabled selected value="">--pilih-Tahun--</option>
                     <option value="2018">2018</option>
                     <option value="2017">2017</option>
                     <option value="2016">2016</option>
@@ -101,10 +103,10 @@
                     <option value="2013">2013</option>
                     <option value="2012">2012</option>
                     <option value="2011">2011</option>
-                    <option value="2010"><= 2010 </option>
+                    <option value="<=2010"><= 2010 </option>
                 </select>
             </div>
-            <button id="submit" class="btn btn-primary">Submit</button>
+            &nbsp;<button id="filter" class="btn btn-primary">Cari</button>
         </div>
         <div class="clearfix"></div>
         <table class="table table-bordered table-striped table-hover" style="margin-top: 10px; text-align: center;">
@@ -119,7 +121,7 @@
                     <th colspan="3">Action</th>
                 </tr>
             </thead>
-            <tbody id="table-jurnal" >
+            <tbody id="table-jurnal">
             </tbody>
         </table>
     </div>

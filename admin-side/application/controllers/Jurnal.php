@@ -11,6 +11,10 @@ class Jurnal extends CI_Controller {
 		$this->load->model('jurnal_model');
 	}
 
+	public function filter($jurusan,$tahun){
+		echo json_encode($this->jurnal_model->ambilJurnalFilter($jurusan,$tahun)->result());
+	}
+
 	public function index(){
 		$data["penulis"] = $this->ambilPenulis("tambah");
 		$this->load->view('jurnal_view',$data);
