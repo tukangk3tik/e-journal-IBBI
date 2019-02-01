@@ -23,8 +23,7 @@ $(document).on("mobileinit",function(){
 
     $("#page-beranda").on("click","button#cari",function(e){
         e.preventDefault();
-        teks = $("input#katakunci").val();
-        //$("#list-jurnal").empty();        
+        teks = $("input#katakunci").val();     
 
         $.get("mobile/page/carijurnal/"+teks,function(data){
             var html = "";
