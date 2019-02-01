@@ -8,7 +8,7 @@ $this->load->view("components/navbar");
 		<div class="col-md-4 col-md-offset-4">
 			<form action="<?= $action ?>" method="GET">
 				<div class="panel panel-info">
-					<div class="panel-heading">Dialog Jurnal</div>
+					<div class="panel-heading">Dialog Jurnal Per-Tahun</div>
 					<div class="panel-body">
                         <div class="form-group">
                             <label for="tahun">Tahun</label>

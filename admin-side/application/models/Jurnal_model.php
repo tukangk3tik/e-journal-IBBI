@@ -55,6 +55,7 @@ class Jurnal_model extends CI_Model{
         return $query;            
     }
 
+    
     //========Jurnal detail model================   
 
     public function ambildataJurnal($id){

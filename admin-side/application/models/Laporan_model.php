@@ -29,6 +29,17 @@ class Laporan_model extends CI_Model{
         return $query;
     }
 
+    public function getJurnalJurusan($jurusan){
+        $query = $this->db
+                        ->select("a.idjurnal,a.judul,a.nim,b.nama,a.tahun,a.jumlahhalaman")
+                        ->from("tbljurnal a")
+                        ->join("tblpenulis b","a.nim=b.nim","right")
+                        ->where("jurusan",$jurusan)
+                        ->get();
+
+        return $query;
+    }
+
     public function getJurnalOne($id){
         $query = $this->db
                         ->where("idjurnal",$id)

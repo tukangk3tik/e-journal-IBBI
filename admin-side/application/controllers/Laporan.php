@@ -11,23 +11,39 @@ class Laporan extends CI_Controller {
 		$this->load->view('welcome_message');
     }
     
-    public function jurnal(){
+    public function jurnaltahun(){
         if($this->input->get()){
             $this->load->view("laporan/jurnal_laporan",array(
                 "jurnal" => $this->laporan_model
-                    ->getJurnal($this->input->get("idjurnal"))
+                    ->getJurnal($this->input->get("tahun"))
                     ->result(),
                 "title" => "Laporan Jurnal"
             ));
         }else{
             $this->load->view("dialog/jurnal_dialog",
                 array(
-                    "action" => "laporan/jurnal"
+                    "action" => "laporan/jurnaltahun"
+                ));
+        }
+    }
+
+    public function jurnaljurusan(){
+        if($this->input->get()){
+            $this->load->view("laporan/jurnal_laporan",array(
+                "jurnal" => $this->laporan_model
+                    ->getJurnalJurusan($this->input->get("jurusan"))
+                    ->result(),
+                "title" => "Laporan Jurnal Per-Jurusan"
+            ));
+        }else{
+            $this->load->view("dialog/jurnaljurusan_dialog",
+                array(
+                    "action" => "laporan/jurnaljurusan"
                 ));
         }
     }
     
-    public function jurnalper(){
+    public function jurnallengkap(){
         if($this->input->get()){
             $data = $this->laporan_model->getJenis($this->input->get("idjurnal"));
         
@@ -39,7 +55,7 @@ class Laporan extends CI_Controller {
                     "isijurnal" => $this->laporan_model
                         ->getJenisJurnal($this->input->get("idjurnal"))
                         ->result_array(),
-                    "title" => "Laporan Per-Jurnal", "params" => $data
+                    "title" => "Laporan Lengkap Per-Jurnal", "params" => $data
                 ));
             } else {
                 $this->_redirectjurnalper();
@@ -52,7 +68,7 @@ class Laporan extends CI_Controller {
     private function _redirectjurnalper(){
         $this->load->view("dialog/jurnalper_dialog",
                 array(
-                    "action" => "laporan/jurnalper",
+                    "action" => "laporan/jurnallengkap",
                     "jurnalall" => $this->laporan_model->getJurnalAll()->result()
                 ));
     }

@@ -32,9 +32,9 @@
                     LAPORAN <span class="caret"></span></a>
 
                     <ul class="dropdown-menu">
-                        <li><a href="laporan/jurnal" target="_blank">Lap. Jurnal</a></li>
-                        <li><a href="laporan/jurnalper" target="_blank">Lap. Per-Jurnal</a></li>
-                        <!-- <li><a href="laporan/penulis" target="_blank">Lap.Penulis</a></li> -->
+                        <li><a href="laporan/jurnaltahun" target="_blank">Lap. Jurnal Per-Tahun</a></li>
+                        <li><a href="laporan/jurnaljurusan" target="_blank">Lap. Jurnal Per-Jurusan</a></li>
+                        <li><a href="laporan/jurnallengkap" target="_blank">Lap. Lengkap Per-Jurnal</a></li>
                         <li><a href="laporan/penulis" target="_blank">Lap. Penulis</a></li>
                         <li><a href="laporan/user" target="_blank">Lap. User</a></li>
                     </ul>

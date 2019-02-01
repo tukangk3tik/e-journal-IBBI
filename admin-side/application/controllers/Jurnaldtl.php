@@ -38,13 +38,8 @@ class Jurnaldtl extends CI_Controller {
 	}
 
 	public function hapus($id,$stats){
-		//if($this->input->get(){
-			//$data = $this->uri->uri_to_assoc();
-			$id = $data['id'];
-			//$stats = $data['stats'];
-			$this->jurnal_model->hapusjurnalDtl($id,$stats);
-			redirect("jurnal/jurnaldtl");
-		//}
+		$this->jurnal_model->hapusjurnalDtl($id,$stats);
+		redirect("jurnal/jurnaldtl");
 	}
 
 
