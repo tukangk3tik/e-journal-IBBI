@@ -173,7 +173,7 @@ function filterJurnal(jurusan,tahun){
                             "<td>"+ data[i].jumlahhalaman +"</td>" +
                             "<td><button id='rubah' class='btn btn-warning btn-block' data-id='"+ data[i].idjurnal +"'><span class='glyphicon glyphicon-pencil'></span> Rubah</button></td>" +
                             "<td><button id='hapus' class='btn btn-danger btn-block' data-id='"+ data[i].idjurnal +"'><span class='glyphicon glyphicon-trash'></span> Hapus</button></td>" +
-                            "<td><form action='jurnal/jurnaldtl' method='POST'><input hidden type='text' name='idjurnal' value='"+data[i].idjurnal+"'>"+
+                            "<td><form action='jurnal/jurnaldtl' method='POST'><input hidden type='text' name='idjurnal' value='"+ data[i].idjurnal+"'>"+
                                 "<input type='submit' class='btn btn-primary btn-block' value=' Detail Jurnal '></form></td>" +
                         "</tr>";
             };

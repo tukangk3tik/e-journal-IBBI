@@ -49,9 +49,9 @@
                     <?php 
                         foreach($result as $hasil):
                             switch ($hasil) {
-                                case $hasil==6:
-                                    echo '<option value="6">Judul, Kata Pengantar, Daftar Isi</option>';
-                                    break;
+                                // case $hasil==6:
+                                //     echo '<option value="6">Judul, Kata Pengantar, Daftar Isi</option>';
+                                //     break;
                                 case $hasil==1:
                                     echo '<option value="1">BAB I</option>';
                                     break;
@@ -108,17 +108,17 @@
                     <th>Link</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Awalan</td>
+                    <!-- <tr>
+                        <td>Awalan</td> -->
                         <?php 
-                            if (in_array($i = "6", $detail)) {
-                                echo $ada."".$i."".$ada2."".$i."".$ada3;
-                                $this->session->set_flashdata('stats','0');
-                            } else {
-                                echo $kosong;
-                            }
+                            // if (in_array($i = "6", $detail)) {
+                            //     echo $ada."".$i."".$ada2."".$i."".$ada3;
+                            //     $this->session->set_flashdata('stats','0');
+                            // } else {
+                            //     echo $kosong;
+                            // }
                         ?> 
-                    </tr>
+                    <!-- </tr> -->
                     <tr>
                         <td>BAB I</td>
                         <?php 

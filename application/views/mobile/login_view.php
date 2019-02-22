@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>e-Jurnal IBBI Mobile</title>
-    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css">
-    <link rel="stylesheet" href="assets/css/jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="assets/css/themes/ejurnal.min.css">
+    <link rel="stylesheet" href="assets/css/themes/jquery.mobile.icons.min.css">
     <link rel="stylesheet" href="assets/css/jquery.mobile.structure-1.4.5.min.css">
 </head>
 
@@ -18,7 +18,7 @@
                 <div style="text-align: center; margin-bottom: 10px;">
                     <img src="assets/img/logo-login.png" width="40%" height="auto" style="margin-bottom:5%;">
                 </div>
-                <form action="mobile/page" id="form-login" data-ajax="false" method="POST" autocomplete="off">
+                <form action="mobile/login/ceklogin" id="form-login" data-ajax="false" method="POST" autocomplete="off">
                     <div class="ui-field-content">
                         <input type="text" name="iduser" id="iduser" placeholder="ID">
                     </div>

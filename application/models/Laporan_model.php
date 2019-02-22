@@ -34,7 +34,8 @@ class Laporan_model extends CI_Model{
                         ->select("a.idjurnal,a.judul,a.nim,b.nama,a.tahun,a.jumlahhalaman")
                         ->from("tbljurnal a")
                         ->join("tblpenulis b","a.nim=b.nim","right")
-                        ->where("jurusan",$jurusan)
+                        ->where("b.jurusan",$jurusan)
+                        ->where("a.idjurnal is not null",NULL,FALSE)
                         ->get();
 
         return $query;

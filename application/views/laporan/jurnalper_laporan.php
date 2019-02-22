@@ -28,7 +28,7 @@ $this->load->view("laporan/head",array("title" => $title));
 
             <?php            
                                 
-                for ($i=0;$i<6;$i++){
+                for ($i=0;$i<5;$i++){
                     foreach ($isijurnal[$i] as $item) {}
                     // $temp = [];
                     // foreach ($item as $temp) {};
